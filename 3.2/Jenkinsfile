@@ -9,6 +9,8 @@ pipeline {
                LOG_LEVEL='INFO'
             }
             steps {
+              slackSend channel: '#sakuleel',
+                   message: "First Step of Build Phase."
                echo "Building release ${RELEASE} with log level ${LOG_LEVEL}..."
                sh 'chmod +x build.sh'
                withCredentials([string(credentialsId: 'an-api-key', variable: 'API_KEY')]) {
